@@ -104,3 +104,112 @@ const filmy = [
 		premiera: '2022-12-24',
 	},
 ]
+
+const filmId = window.location.hash.slice(1);
+const filmyData = filmy.find((item) => item.id === filmId);
+
+const mainElement = document.querySelector('#detail-filmu');
+const dlouhyPopis = mainElement.querySelector('.card-text');
+
+
+mainElement.innerHTML = `
+    <div class="container-lg mt-5">
+			<div class="card mb-3" id="detail-filmu">
+				<div class="row g-0">
+					<div class="col-md-5">
+						<img
+							src="${filmyData.plakat.url}"
+							alt="plakát"
+							class="img-fluid rounded-start"
+							width="663"
+							height="909"
+						/>
+					</div>
+					<div class="col-md-7">
+						<div class="card-body">
+							<h5 class="card-title">${filmyData.nazev}</h5>
+							<p class="card-text">${filmyData.popis}</p>
+							<p class="card-text">
+								<small class="text-muted" id="premiera"
+									>Premiéra <strong>24. prosince 2022</strong>, což je za 24
+									dní.</small
+								>
+							</p>
+							<h6>Hodnocení</h6>
+							<div class="stars">
+								<button
+									class="far fa-star button-star"
+									data-mdb-toggle="tooltip"
+									title="Nic moc"
+								>
+									1
+								</button>
+								<button
+									class="far fa-star button-star"
+									data-mdb-toggle="tooltip"
+									title="Ucházející"
+								>
+									2
+								</button>
+								<button
+									class="far fa-star button-star"
+									data-mdb-toggle="tooltip"
+									title="Dobrý"
+								>
+									3
+								</button>
+								<button
+									class="far fa-star button-star"
+									data-mdb-toggle="tooltip"
+									title="Skvělý"
+								>
+									4
+								</button>
+								<button
+									class="far fa-star button-star"
+									data-mdb-toggle="tooltip"
+									title="Úžasný"
+								>
+									5
+								</button>
+							</div>
+
+							<h6 class="mt-4">Poznámka</h6>
+							<form id="note-form">
+								<div class="row">
+									<div class="col-md-6 col-lg-7 col-xl-8 mb-2">
+										<div class="form-outline">
+											<textarea
+												class="form-control"
+												id="message-input"
+												rows="4"
+											></textarea>
+											<label class="form-label" for="message-input"
+												>Text poznámky</label
+											>
+										</div>
+									</div>
+									<div class="col-md-6 col-lg-5 col-xl-4">
+										<div class="form-check d-flex justify-content-center mb-2">
+											<input
+												class="form-check-input me-2 mb-2"
+												type="checkbox"
+												value=""
+												id="terms-checkbox"
+											/>
+											<label class="form-check-label" for="terms-checkbox">
+												Souhlasím se všeobecnými podmínky užívání.
+											</label>
+										</div>
+										<button type="submit" class="btn btn-primary btn-block">
+											Uložit
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  `;
