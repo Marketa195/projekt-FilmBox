@@ -131,7 +131,7 @@ mainElement.innerHTML = `
 							<p class="card-text">${filmyData.popis}</p>
 							<p class="card-text">
 								<small class="text-muted" id="premiera"
-									>Premiéra <strong>24. prosince 2022</strong>, což je za 24
+									>Premiéra <strong>${dayjs(filmyData.premiera).format('D. M. YYYY')}</strong>, což je za 24
 									dní.</small
 								>
 							</p>
@@ -213,3 +213,48 @@ mainElement.innerHTML = `
 			</div>
 		</div>
   `;
+
+
+function zvyrazniHvezdicky(pocet) {
+    const hvezdicky = document.querySelectorAll(".fa-star"); 
+    hvezdicky.forEach((hvezdicka, index) => {
+        if (index < pocet) {
+            hvezdicka.classList.remove("far");
+            hvezdicka.classList.add("fas");
+        } else {
+            hvezdicka.classList.remove("fas");
+            hvezdicka.classList.add("far"); 
+        }
+    });
+}
+
+document.querySelectorAll(".fa-star").forEach((hvezdicka) => {
+    hvezdicka.addEventListener("click", () => {
+        const poradi = parseInt(hvezdicka.textContent);
+        zvyrazniHvezdicky(poradi);
+    });
+});
+
+  const formElm = document.querySelector("#note-form");
+  formElm.addEventListener("submit", (event) => {
+	  event.preventDefault(); 
+  
+	  const answerInput = document.querySelector("#message-input");
+	  const checkBoxInput = document.querySelector("#terms-checkbox");
+  
+	  if (answerInput.value.trim() === "") {
+		  answerInput.classList.add("is-invalid");
+		  checkBoxInput.classList.remove("is-invalid"); 
+	  
+	  } else if (!checkBoxInput.checked) {
+		  checkBoxInput.classList.add("is-invalid");
+		  answerInput.classList.remove("is-invalid"); 
+	  
+	  } else {
+		  answerInput.classList.remove("is-invalid");
+		  checkBoxInput.classList.remove("is-invalid");
+		  formElm.innerHTML = `<p class="card-text">${answerInput.value}</p>`;
+	  }
+  });
+  
+  

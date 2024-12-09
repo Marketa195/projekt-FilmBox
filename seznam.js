@@ -106,8 +106,8 @@ const filmy = [
 ]
 
 
-const seznamFilmu = document.querySelector('#seznam-filmu');
-seznamFilmu.innerHTML = ''; 
+const seznamFilmu = document.querySelector("#seznam-filmu");
+seznamFilmu.innerHTML = ""; 
 
 filmy.forEach(item => {
     seznamFilmu.innerHTML += `
