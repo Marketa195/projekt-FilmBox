@@ -103,6 +103,19 @@ const filmy = [
 			'Na zámek v podhůří Krkonoš přijíždí jeho nový majitel Štěpán se svojí snoubenkou, krásnou komtesou Blankou, a mladším bratrem Adamem. Cestou kočár nešťastně srazí kolemjdoucí dívku, Adam jí pomůže a ona se do něj zamiluje. Na zámku Adam objeví starou vlašskou knihu, která by měla obsahovat cestu k pokladům. Tajemné značky vlašské knihy však nedokáže vyluštit ani národopisec Jiráček, který v kraji sbírá pověsti a nevychází z údivu nad tím, že zdejší lidé stále věří v Krakonoše. Na zámku se objeví záhadný cizinec a nabídne Štěpánovi, že jej k pokladu za určitých podmínek dovede. Výprava do hor může začít. Naplní se Liduščina láska k Adamovi? Jakou záhadu skrývá starý obraz na zámku Hůrka a co strašlivého se v horách kdysi odehrálo? A kdo je vlastně Krakonoš a jaké je jeho největší tajemství? (csfd.cz, Česká televize)',
 		premiera: '2022-12-24',
 	},
+	{
+		id: 'proklety-ostrov',
+		nazev: 'Prokletý ostrov',
+		plakat: {
+			url: 'https://image.pmgstatic.com/cache/resized/w663/files/images/film/posters/159/611/159611628_247f1d.jpg',
+			sirka: 420,
+			vyska: 592,
+		},
+		ochutnavka: 'Výborná žánrovka s hutnou atmosférou.',
+		popis:
+			'Když federální agent Teddy Daniels dorazí do věznice pro psychicky narušené zločince na ostrově Shutter Island, zdá se, že půjde jen o rutinní vyšetřování. Jenže atmosféra na ostrově brzy zhoustne. Jak Teddy postupuje kupředu, odhaluje stále otřesnější a temnější skutečnosti. Nakonec zjistí, že existují místa, která člověku už nikdy nedovolí odejít. (csfd.cz, Magic Box)',
+		premiera: '2010-02-19',
+	},
 ]
 
 const filmId = window.location.hash.slice(1);
@@ -131,9 +144,7 @@ mainElement.innerHTML = `
 							<p class="card-text">${filmyData.popis}</p>
 							<p class="card-text">
 								<small class="text-muted" id="premiera"
-									>Premiéra <strong>${dayjs(filmyData.premiera).format('D. M. YYYY')}</strong>, což je za 24
-									dní.</small
-								>
+									>Premiéra <strong>${dayjs(filmyData.premiera).format('D. M. YYYY')}.</strong>
 							</p>
 							<h6>Hodnocení</h6>
 							<div class="stars">
@@ -215,6 +226,8 @@ mainElement.innerHTML = `
   `;
 
 
+  
+
 function zvyrazniHvezdicky(pocet) {
     const hvezdicky = document.querySelectorAll(".fa-star"); 
     hvezdicky.forEach((hvezdicka, index) => {
@@ -244,11 +257,13 @@ document.querySelectorAll(".fa-star").forEach((hvezdicka) => {
   
 	  if (answerInput.value.trim() === "") {
 		  answerInput.classList.add("is-invalid");
-		  checkBoxInput.classList.remove("is-invalid"); 
+		  checkBoxInput.classList.remove("is-invalid");
+		  answerInput.focus();
 	  
 	  } else if (!checkBoxInput.checked) {
 		  checkBoxInput.classList.add("is-invalid");
-		  answerInput.classList.remove("is-invalid"); 
+		  answerInput.classList.remove("is-invalid");
+		  checkBoxInput.focus(); 
 	  
 	  } else {
 		  answerInput.classList.remove("is-invalid");
