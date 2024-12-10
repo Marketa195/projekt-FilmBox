@@ -121,8 +121,8 @@ const filmy = [
 const filmId = window.location.hash.slice(1);
 const filmyData = filmy.find((item) => item.id === filmId);
 
-const mainElement = document.querySelector('#detail-filmu');
-const dlouhyPopis = mainElement.querySelector('.card-text');
+const mainElement = document.querySelector("#detail-filmu");
+const dlouhyPopis = mainElement.querySelector(".card-text");
 
 
 mainElement.innerHTML = `
@@ -224,9 +224,6 @@ mainElement.innerHTML = `
 			</div>
 		</div>
   `;
-
-
-  
 
 function zvyrazniHvezdicky(pocet) {
     const hvezdicky = document.querySelectorAll(".fa-star"); 
